@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card'
 import Paper from '@material-ui/core/Paper'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
+import DataTable from '../components/structure/DataTable'
 import Typography from '@material-ui/core/Typography'
 import MortgagePayoffOverTime from '../components/visualization/MortgagePayoffOverTime'
 import TextField from '@material-ui/core/TextField'
@@ -49,6 +50,7 @@ class DashboardView extends Component {
             saved: 0,
             years: 0,
             yearsLeft: 0,
+            amortization: [],
             interestPaid: 0,
             currentMortgagePayment: 1308.76,
             remainingBalance: 150000,
@@ -60,6 +62,11 @@ class DashboardView extends Component {
         this.interestSaved = this.interestSaved.bind(this)
         this.saveSession = this.saveSession.bind(this)
         this.loadSession = this.loadSession.bind(this)
+        this.setAmortization = this.setAmortization.bind(this)
+    }
+
+    setAmortization(data) {
+        this.setState({ amortization: data })
     }
 
     interestSaved(interestPaidFull, interestPaidQuick) {
@@ -116,29 +123,39 @@ class DashboardView extends Component {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Paper>
-                            <div style={{ float: 'left', margin: '5px' }}>
+                            <div align="center">
                                 <img alt="" src={Logo} width={66} />
                             </div>
                             <form sclassName={classes.container} noValidate autoComplete="off">
                                 <div align="center">
-                                    <TextField
-                                        id="outlined-name"
-                                        label="Mortgage Payment (PI)"
-                                        className={classes.textField}
-                                        value={this.state.currentMortgagePayment}
-                                        onChange={event => this.handleChange(event, 'currentMortgagePayment')}
-                                        margin="normal"
-                                    />
-                                    <TextField id="outlined-name" label="Remaining Balance" className={classes.textField} value={this.state.remainingBalance} onChange={event => this.handleChange(event, 'remainingBalance')} margin="normal" />
-                                    <TextField id="outlined-name" label="Interest Rate" className={classes.textField} value={this.state.interest} onChange={event => this.handleChange(event, 'interest')} margin="normal" />
-                                    <TextField
-                                        id="outlined-name"
-                                        label="Additional Payment"
-                                        className={classes.textField}
-                                        value={this.state.additionalMortgagePayment}
-                                        onChange={event => this.handleChange(event, 'additionalMortgagePayment')}
-                                        margin="normal"
-                                    />
+                                    <Grid container spacing={0}>
+                                        <Grid item xl={3} lg={3} md={6} sm={6} xs={6}>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="Mortgage Payment (PI)"
+                                                className={classes.textField}
+                                                value={this.state.currentMortgagePayment}
+                                                onChange={event => this.handleChange(event, 'currentMortgagePayment')}
+                                                margin="normal"
+                                            />
+                                        </Grid>
+                                        <Grid item xl={3} lg={3} md={6} sm={6} xs={6}>
+                                            <TextField id="outlined-name" label="Remaining Balance" className={classes.textField} value={this.state.remainingBalance} onChange={event => this.handleChange(event, 'remainingBalance')} margin="normal" />
+                                        </Grid>
+                                        <Grid item xl={3} lg={3} md={6} sm={6} xs={6}>
+                                            <TextField id="outlined-name" label="Interest Rate" className={classes.textField} value={this.state.interest} onChange={event => this.handleChange(event, 'interest')} margin="normal" />
+                                        </Grid>
+                                        <Grid item xl={3} lg={3} md={6} sm={6} xs={6}>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="Additional Payment"
+                                                className={classes.textField}
+                                                value={this.state.additionalMortgagePayment}
+                                                onChange={event => this.handleChange(event, 'additionalMortgagePayment')}
+                                                margin="normal"
+                                            />
+                                        </Grid>
+                                    </Grid>
                                 </div>
                             </form>
                         </Paper>
@@ -156,12 +173,13 @@ class DashboardView extends Component {
                                         interest={this.state.interest}
                                         setInterestSaved={this.interestSaved.bind(this)}
                                         setYearsSaved={this.yearsSaved.bind(this)}
+                                        setAmortizationSchedule={this.setAmortization.bind(this)}
                                     />
                                 </CardContent>
                             </Card>
                         </div>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xl={3} lg={3} md={6} sm={12} xs={12}>
                         <Card>
                             <CardHeader subheader={'Years Saved'} />
                             <CardContent>
@@ -171,7 +189,7 @@ class DashboardView extends Component {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xl={3} lg={3} md={6} sm={12} xs={12}>
                         <Card>
                             <CardHeader subheader={'Interest Saved'} />
                             <CardContent>
@@ -181,7 +199,7 @@ class DashboardView extends Component {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xl={3} lg={3} md={6} sm={12} xs={12}>
                         <Card>
                             <CardHeader subheader={'Years Left'} />
                             <CardContent>
@@ -191,7 +209,7 @@ class DashboardView extends Component {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xl={3} lg={3} md={6} sm={12} xs={12}>
                         <Card>
                             <CardHeader subheader={'Interest Paid'} />
                             <CardContent>
@@ -203,9 +221,22 @@ class DashboardView extends Component {
                     </Grid>
                     <Grid item xs={12}>
                         <Card>
-                            <CardHeader subheader={'Powered by Finance Breeze'} />
+                            <CardHeader subheader={'Amortization Schedule'} />
                             <CardContent>
-                                <Typography>Finance Breeze is a hobby website in order to help people pay off real-estate at a faster pace to setup for investment opportunities and cashflow (through rentals or next deal).</Typography>
+                                <DataTable
+                                    order="asc"
+                                    orderBy="timestampraw"
+                                    allowOrdering={false}
+                                    rowsPerPage={25}
+                                    headers={[
+                                        { name: 'timestamp', display: 'Date', orderbyname: 'timestampraw' },
+                                        { name: 'interest', display: 'Interest', orderbyname: 'interestraw' },
+                                        { name: 'principle', display: 'Principle', orderbyname: 'principleraw' },
+                                        { name: 'remaining', display: 'Remaining', orderbyname: 'remainingraw' },
+                                    ]}
+                                    data={this.state.amortization}
+                                    columns={['timestamp', 'interest', 'principle', 'remaining']}
+                                />
                             </CardContent>
                         </Card>
                     </Grid>

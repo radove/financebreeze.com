@@ -53,7 +53,7 @@ class DashboardView extends Component {
 
     refreshData() {
         //const { classes } = this.props
-
+        let amortization = []
         let upsidedown = false
         let currentDateFull = moment()
         let currentDateQuick = moment()
@@ -103,6 +103,17 @@ class DashboardView extends Component {
                     y: remainingBalanceWithAdditionalPayment,
                 })
             }
+            // 'timestamp', 'interest', 'principle', 'remaining
+            let amortizationPoint = {}
+            amortizationPoint['timestampraw'] = moment(currentDateQuick).valueOf()
+            amortizationPoint['timestamp'] = moment(currentDateQuick).format('MMMM Do YYYY')
+            amortizationPoint['interest'] = formatter.format(totalMonthly)
+            amortizationPoint['interestraw'] = totalMonthly
+            amortizationPoint['principle'] = formatter.format(principle)
+            amortizationPoint['principleraw'] = principle
+            amortizationPoint['remaining'] = formatter.format(remainingBalanceWithAdditionalPayment)
+            amortizationPoint['remainingraw'] = remainingBalanceWithAdditionalPayment
+            amortization.push(amortizationPoint)
         }
 
         var diffInYears = moment(currentDateFull).diff(moment(currentDateQuick), 'years')
@@ -112,6 +123,7 @@ class DashboardView extends Component {
 
         this.props.setInterestSaved(interestPaidFull, interestPaidQuick)
         this.props.setYearsSaved(diffInYears, yearsLeft)
+        this.props.setAmortizationSchedule(amortization)
     }
     updateWindowDimensions() {
         if (document.getElementById('MortgagePayoffOverTime') !== null) {
