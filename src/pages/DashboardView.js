@@ -123,9 +123,6 @@ class DashboardView extends Component {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Paper>
-                            <div align="center">
-                                <img alt="" src={Logo} width={66} />
-                            </div>
                             <form sclassName={classes.container} noValidate autoComplete="off">
                                 <div align="center">
                                     <Grid container spacing={0}>
@@ -163,7 +160,7 @@ class DashboardView extends Component {
                     <Grid item xs={12}>
                         <div id="MortgagePayoffOverTime">
                             <Card>
-                                <CardHeader title={'Mortgage Early Payoff Calculator'} subheader={'Plan for your future with FinanceBreeze.com'} />
+                                <CardHeader title={'Mortgage Early Payoff Calculator'} subheader={'Plan for your future with FinanceBreeze.com'} action={<img alt="" src={Logo} width={50} />} />
                                 <CardContent>
                                     <MortgagePayoffOverTime
                                         brushing={false}
@@ -237,6 +234,20 @@ class DashboardView extends Component {
                                     data={this.state.amortization}
                                     columns={['timestamp', 'interest', 'principle', 'remaining']}
                                 />
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Card>
+                            <CardHeader subheader={'Developed by...'} />
+                            <CardContent>
+                                <div align="center">
+                                    <div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="radove">
+                                        <a class="LI-simple-link" href="https://www.linkedin.com/in/radove?trk=profile-badge">
+                                            Ronnie Dove
+                                        </a>
+                                    </div>
+                                </div>
                             </CardContent>
                         </Card>
                     </Grid>
