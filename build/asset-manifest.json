@@ -1,19 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.68a98085.chunk.css",
-    "main.js": "/static/js/main.4da4aba7.chunk.js",
-    "main.js.map": "/static/js/main.4da4aba7.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.7260a1bd.js",
-    "runtime~main.js.map": "/static/js/runtime~main.7260a1bd.js.map",
-    "static/css/2.ce8b2356.chunk.css": "/static/css/2.ce8b2356.chunk.css",
-    "static/js/2.68026d8d.chunk.js": "/static/js/2.68026d8d.chunk.js",
-    "static/js/2.68026d8d.chunk.js.map": "/static/js/2.68026d8d.chunk.js.map",
+    "main.css": "/static/css/main.cc576a91.chunk.css",
+    "main.js": "/static/js/main.5ab5c957.chunk.js",
+    "main.js.map": "/static/js/main.5ab5c957.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a0226724.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a0226724.js.map",
+    "static/css/2.a144dcba.chunk.css": "/static/css/2.a144dcba.chunk.css",
+    "static/js/2.398a2a3e.chunk.js": "/static/js/2.398a2a3e.chunk.js",
+    "static/js/2.398a2a3e.chunk.js.map": "/static/js/2.398a2a3e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2a8e56c81400d32b0de871b8bf519fb9.js": "/precache-manifest.2a8e56c81400d32b0de871b8bf519fb9.js",
+    "precache-manifest.b31726b496b3d70ddbae2ac2c600f911.js": "/precache-manifest.b31726b496b3d70ddbae2ac2c600f911.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.ce8b2356.chunk.css.map": "/static/css/2.ce8b2356.chunk.css.map",
-    "static/css/main.68a98085.chunk.css.map": "/static/css/main.68a98085.chunk.css.map",
-    "static/media/logo.png": "/static/media/logo.d9714682.png",
-    "static/media/index.css": "/static/media/roboto-latin-900italic.ebf6d164.woff2"
-  }
+    "static/css/2.a144dcba.chunk.css.map": "/static/css/2.a144dcba.chunk.css.map",
+    "static/css/main.cc576a91.chunk.css.map": "/static/css/main.cc576a91.chunk.css.map",
+    "static/js/2.398a2a3e.chunk.js.LICENSE.txt": "/static/js/2.398a2a3e.chunk.js.LICENSE.txt",
+    "static/media/dove_io_logo_new.png": "/static/media/dove_io_logo_new.f419ff27.png",
+    "static/media/slick-theme.css": "/static/media/slick.f97e3bbf.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0226724.js",
+    "static/css/2.a144dcba.chunk.css",
+    "static/js/2.398a2a3e.chunk.js",
+    "static/css/main.cc576a91.chunk.css",
+    "static/js/main.5ab5c957.chunk.js"
+  ]
 }
