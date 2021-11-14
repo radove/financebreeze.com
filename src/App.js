@@ -203,7 +203,7 @@ class App extends React.Component {
             style={{
               paddingLeft: "2%",
               paddingRight: "2%",
-              backgroundColor: "#091423",
+              backgroundColor: "#000000",
             }}
           >
             <div style={{ float: "left" }}>
@@ -243,18 +243,15 @@ class App extends React.Component {
             paddingRight: "2%",
           }}
         >
-          <div align="center" style={{ margin: "25px" }}></div>
           <Alert
             style={{
-              marginLeft: "25%",
-              marginRight: "25%",
               marginTop: "15px",
               marginBottom: "15px",
             }}
             description={
               <span>
                 <div align="center">
-                  <Title level={3}>Mortgage Payoff Calculator</Title>
+                  <Title level={1}>Mortgage Payoff Calculator</Title>
                 </div>
                 <Text>
                   Use our mortgage payoff calculator to see how fast you can pay
