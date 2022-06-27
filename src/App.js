@@ -2,7 +2,6 @@ import React from "react";
 import logo from "./resources/dove_io_logo_new.png";
 import "antd/dist/antd.dark.css";
 import "slick-carousel/slick/slick.css";
-import "video-react/dist/video-react.css"; // import css
 import "slick-carousel/slick/slick-theme.css";
 import "moment-timezone";
 import FinanceForm from "./components/FinanceForm";
