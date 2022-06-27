@@ -30,6 +30,14 @@ const FinanceForm = (props) => {
         >
           <Input type="number" defaultValue={props.remainingBalance} />
         </Form.Item>
+        <Form.Item
+          style={{ margin: "10px" }}
+          name="onetimePayment"
+          label="One Time Payment"
+          rules={[{ required: false }]}
+        >
+          <Input type="number" defaultValue={props.onetimePayment} />
+        </Form.Item>
       </Form>
       <Form
         form={form}

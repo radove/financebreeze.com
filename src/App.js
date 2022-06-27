@@ -41,6 +41,7 @@ class App extends React.Component {
       interestPaid: 0,
       currentMortgagePayment: 1308.76,
       remainingBalance: 150000,
+      onetimePayment: 0,
       interest: 3.75,
       additionalMortgagePayment: 500,
     };
@@ -99,8 +100,10 @@ class App extends React.Component {
     let currentDateQuick = moment();
     let interest = this.state.interest / 100;
     let monthlyInterest = interest / 12;
-    let remainingBalance = this.state.remainingBalance;
-    let remainingBalanceWithAdditionalPayment = this.state.remainingBalance;
+    let remainingBalance =
+      this.state.remainingBalance - this.state.onetimePayment;
+    let remainingBalanceWithAdditionalPayment =
+      this.state.remainingBalance - this.state.onetimePayment;
 
     let data = [];
     let additionaldata = [];
@@ -270,6 +273,7 @@ class App extends React.Component {
               <Row type="flex" justify="center" align="top">
                 <FinanceForm
                   currentMortgagePayment={this.state.currentMortgagePayment}
+                  onetimePayment={this.state.onetimePayment}
                   remainingBalance={this.state.remainingBalance}
                   interest={this.state.interest}
                   additionalMortgagePayment={
